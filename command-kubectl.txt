@@ -1,0 +1,8 @@
+1. To add a new context to the cluster you can run the following command on AWS CLI (command prompt) 
+aws eks update-kubeconfig --region us-east-1 --name eksdevelopment-cluster
+2. For the next step you will need the kubectl configured and then insert the following command:
+kubectl config user-context <insert here the context returned by the previous command>
+3. To get/list the nodes you can:
+kubectl get node
+4. To get all pods running into the cluster  you can run the following:
+kubectl get po -A
