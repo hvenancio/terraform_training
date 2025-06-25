@@ -3,14 +3,14 @@ module "eks_network" {
   cidr_block_vpc = var.cidr_block_vpc
   project_name   = var.project_name
   env_name       = var.env_name
-  tags           = local.tags
+  tags           = var.tags
 }
 
 module "eks_cluster" {
   source           = "./modules/cluster"
   project_name     = var.project_name
   env_name         = var.env_name
-  tags             = local.tags
+  tags             = var.tags
   public_subnet_1a = module.eks_network.subnet_pub_1a
   public_subnet_1b = module.eks_network.subnet_pub_1b
 }
@@ -22,7 +22,7 @@ module "eks_managed_node_group" {
   subnet_private_1a = module.eks_network.subnet_private_1a
   subnet_private_1b = module.eks_network.subnet_private_1b
   cluster_name      = module.eks_cluster.cluster_name
-  tags              = local.tags
+  tags              = var.tags
 }
 
 module "eks_load_balancer_controller" {
@@ -31,5 +31,5 @@ module "eks_load_balancer_controller" {
   env_name     = var.env_name
   oidc         = module.eks_cluster.oidc
   cluster_name = module.eks_cluster.cluster_name
-  tags         = local.tags
+  tags         = var.tags
 }
