@@ -1,5 +1,6 @@
 variable "env_name" {
-  type = string
+  type        = string
+  description = "Current environment being deployed to"
 }
 
 variable "cidr_block_vpc" {

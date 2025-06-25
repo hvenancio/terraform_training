@@ -1,3 +1,3 @@
-output "oidc" {
-  value = module.eks_cluster.oidc
-}
+# output "oidc" {
+#   value = module.eks_cluster.oidc
+# }
